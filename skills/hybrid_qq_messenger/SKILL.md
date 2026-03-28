@@ -1,6 +1,6 @@
 ---
 name: hybrid-qq-messenger
-description: Use when you need to integrate QQ messaging with OpenClaw, combining NapCat for stable message reception and AstrBot for reliable proactive sending in hybrid architecture scenarios.
+description: Use when integrating QQ messaging with OpenClaw, requiring stable message reception via NapCat and reliable proactive sending via AstrBot in hybrid architecture scenarios.
 ---
 
 # Hybrid QQ Messenger Skill
@@ -10,6 +10,23 @@ description: Use when you need to integrate QQ messaging with OpenClaw, combinin
 This skill provides comprehensive QQ messaging capabilities for OpenClaw through a hybrid architecture that separates message reception from proactive sending, ensuring maximum reliability and stability.
 
 ## When to Use
+
+```dot
+digraph when_to_use {
+    "Need QQ messaging?" [shape=diamond];
+    "Stability important?" [shape=diamond];
+    "Proactive sending needed?" [shape=diamond];
+    "Use hybrid-qq-messenger" [shape=box];
+    "Consider alternatives" [shape=box];
+
+    "Need QQ messaging?" -> "Stability important?" [label="Yes"];
+    "Need QQ messaging?" -> "Consider alternatives" [label="No"];
+    "Stability important?" -> "Proactive sending needed?" [label="Yes"];
+    "Stability important?" -> "Consider alternatives" [label="No"];
+    "Proactive sending needed?" -> "Use hybrid-qq-messenger" [label="Yes"];
+    "Proactive sending needed?" -> "Consider alternatives" [label="No"];
+}
+```
 
 - **QQ Message Integration**: When OpenClaw needs to receive and send QQ messages
 - **Proactive Notifications**: When sending system alerts, reminders, or updates via QQ
@@ -62,20 +79,38 @@ The architecture separates concerns:
 ## Usage Patterns
 
 ### Sending Proactive Messages
+
 ```python
-from main import send_message
+import asyncio
 
-# Send simple message
-result = await send_message("System notification: Service started")
+async def send_qq_notifications():
+    """Send proactive QQ messages using hybrid messenger"""
+    
+    # Import must be done in OpenClaw environment
+    try:
+        from main import send_message
+        
+        # Send system notification
+        result = await send_message("🔔 System notification: Service started successfully")
+        
+        if result.get('status') == 'ok':
+            print("✅ Message delivered successfully")
+            print(f"Message ID: {result.get('message_id', 'N/A')}")
+        else:
+            print(f"❌ Message failed: {result.get('message', 'Unknown error')}")
+            
+        # Send to specific session with session management
+        session_result = await send_message(
+            "📅 Personal reminder: Meeting in 15 minutes", 
+            session_id="private_YOUR_QQ_NUMBER"
+        )
+        
+    except ImportError:
+        print("⚠️  This code must run in OpenClaw environment with hybrid-qq-messenger plugin")
+        print("💡 Install plugin and restart OpenClaw to enable QQ messaging")
 
-# Send to specific session
-result = await send_message("Personal reminder", session_id="private_YOUR_QQ_NUMBER")
-
-# Check delivery status
-if result.get('status') == 'ok':
-    # Message delivered successfully
-else:
-    # Handle delivery failure
+# Run in OpenClaw environment
+# asyncio.run(send_qq_notifications())
 ```
 
 ### Conversation Handling
@@ -119,6 +154,16 @@ Messages received via NapCat are automatically processed by OpenClaw AI, maintai
 3. **Error Monitoring**: Implement monitoring for connection and delivery issues
 4. **Session Cleanup**: Regular cleanup of expired sessions to prevent memory leaks
 5. **Backup Communication**: Consider alternative notification channels for critical alerts
+
+## Quick Reference
+
+| Task | Command | Notes |
+|------|---------|-------|
+| **Installation Check** | `python tests/check_installation.py` | Verify all dependencies and services |
+| **Basic Test** | `python tests/quick_test.py` | Test core messaging functionality |
+| **Full System Test** | `python tests/test_system.py` | Complete end-to-end validation |
+| **Send Message** | `from main import send_message` | Use in OpenClaw environment |
+| **Check Status** | `python -c "from main import send_message; import asyncio; asyncio.run(send_message('test'))"` | Quick functionality test |
 
 ## Quick Start
 
