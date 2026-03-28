@@ -17,7 +17,7 @@ pip install websockets aiohttp
 ### 步骤3: 复制插件
 将整个 `hybrid-qq-messenger` 目录复制到：
 ```
-J:\Alice\openclaw\plugins\hybrid-qq-messenger
+YOUR_OPENCLAW_PLUGINS_PATH_HERE
 ```
 
 ### 步骤4: 配置OpenClaw
@@ -28,7 +28,7 @@ J:\Alice\openclaw\plugins\hybrid-qq-messenger
 ],
 "load": {
   "paths": [
-    "J:\\\\Alice\\\\openclaw\\\\plugins\\\\hybrid-qq-messenger"
+    "YOUR_PLUGIN_PATH_HERE"
   ]
 },
 "entries": {
@@ -48,7 +48,7 @@ J:\Alice\openclaw\plugins\hybrid-qq-messenger
   "accessToken": "",
   "path": "/onebot/v11/ws",
   "requireMention": true,
-  "whitelistUserIds": [3364897325],
+  "whitelistUserIds": [YOUR_QQ_NUMBER_HERE],
   "renderMarkdownToPlain": true
 }
 ```

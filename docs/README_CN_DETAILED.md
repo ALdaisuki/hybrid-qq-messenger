@@ -143,7 +143,7 @@ J:\Alice\openclaw\openclaw.json
       "accessToken": "",
       "path": "/onebot/v11/ws",
       "requireMention": true,
-      "whitelistUserIds": [3364897325],  // 改成你的QQ号
+      "whitelistUserIds": [YOUR_QQ_NUMBER_HERE],  // 改成你的QQ号
       "renderMarkdownToPlain": true,
       "normalModeFlushIntervalMs": 1200,
       "normalModeFlushChars": 160
@@ -177,7 +177,7 @@ J:\Alice\openclaw\plugins\hybrid-qq-messenger\config.json
       "api_url": "http://localhost:6185/api/v1/im/message",
       "api_key": "abk_ZzD65Hl91FqYTOupmqICqq9kChCaWWTuUq_8JEvR82E",  // 改成你的API密钥
       "enabled": true,
-      "target_qq": "3364897325",  // 改成你的QQ号
+      "target_qq": "YOUR_QQ_NUMBER_HERE",  // 改成你的QQ号
       "retry_count": 3,
       "retry_delay": 2
     },
@@ -199,7 +199,7 @@ J:\Alice\openclaw\plugins\hybrid-qq-messenger\config.json
 
 **重要修改：**
 - `api_key`：改成你从AstrBot获取的真实API密钥
-- `target_qq`：改成你的QQ号码
+- `target_qq`：改成你的QQ号码（例如：YOUR_QQ_NUMBER_HERE）
 
 ### 第七步：重启OpenClaw
 
@@ -218,7 +218,7 @@ openclaw gateway restart
 打开终端，进入插件目录：
 
 ```bash
-cd "J:\Alice\openclaw\plugins\hybrid-qq-messenger"
+cd "YOUR_PLUGIN_PATH_HERE"
 python check_installation.py
 ```
 

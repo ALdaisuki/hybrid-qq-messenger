@@ -143,7 +143,7 @@ Then in the same file, find `channels` section, add:
       "accessToken": "",
       "path": "/onebot/v11/ws",
       "requireMention": true,
-      "whitelistUserIds": [3364897325],  // Change to your QQ number
+      "whitelistUserIds": [YOUR_QQ_NUMBER_HERE],  // Change to your QQ number
       "renderMarkdownToPlain": true,
       "normalModeFlushIntervalMs": 1200,
       "normalModeFlushChars": 160
@@ -177,7 +177,7 @@ Modify to this content:
       "api_url": "http://localhost:6185/api/v1/im/message",
       "api_key": "abk_ZzD65Hl91FqYTOupmqICqq9kChCaWWTuUq_8JEvR82E",  // Change to your real API key
       "enabled": true,
-      "target_qq": "3364897325",  // Change to your QQ number
+      "target_qq": "YOUR_QQ_NUMBER_HERE",  // Change to your QQ number
       "retry_count": 3,
       "retry_delay": 2
     },
@@ -199,7 +199,7 @@ Modify to this content:
 
 **Important Changes:**
 - `api_key`: Change to your real API key from AstrBot
-- `target_qq`: Change to your QQ number
+- `target_qq`: Change to your QQ number (e.g., YOUR_QQ_NUMBER_HERE)
 
 ### Step 7: Restart OpenClaw
 
@@ -218,7 +218,7 @@ Wait for OpenClaw to restart, this may take a few seconds.
 Open terminal, go to plugin directory:
 
 ```bash
-cd "J:\Alice\openclaw\plugins\hybrid-qq-messenger"
+cd "YOUR_PLUGIN_PATH_HERE"
 python check_installation.py
 ```
 

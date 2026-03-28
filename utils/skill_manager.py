@@ -93,7 +93,7 @@ class SkillManager:
             "configuration": {
                 "napcat_ws_url": "ws://localhost:3001",
                 "astrbot_api_url": "http://localhost:6185/api/v1/im/message",
-                "target_qq": "3364897325"
+                "target_qq": "YOUR_QQ_NUMBER_HERE"
             }
         }
         

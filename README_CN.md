@@ -96,7 +96,7 @@ cp -r hybrid-qq-messenger $OPENCLAW_HOME/plugins/
       "accessToken": "",
       "path": "/onebot/v11/ws",
       "requireMention": true,
-      "whitelistUserIds": [3364897325],
+      "whitelistUserIds": [YOUR_QQ_NUMBER_HERE],
       "renderMarkdownToPlain": true,
       "normalModeFlushIntervalMs": 1200,
       "normalModeFlushChars": 160
@@ -144,7 +144,7 @@ from main import send_message
 result = await send_message("这是一条主动消息")
 
 # 发送到特定会话
-result = await send_message("会话特定消息", session_id="private_3364897325")
+result = await send_message("会话特定消息", session_id="private_YOUR_QQ_NUMBER_HERE")
 
 # 检查发送结果
 if result.get('status') == 'ok':

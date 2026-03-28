@@ -45,7 +45,7 @@ from main import send_message
 result = await send_message("这是一条主动消息")
 
 # 发送到特定会话
-result = await send_message("会话特定消息", session_id="private_3364897325")
+result = await send_message("会话特定消息", session_id="private_YOUR_QQ_NUMBER_HERE")
 ```
 
 #### 插件生命周期

@@ -27,7 +27,7 @@ async def example_basic_usage():
     print("\n2. 发送到特定会话")
     result = await plugin.send_proactive_message(
         "这是一条会话特定消息",
-        session_id="private_3364897325"
+        session_id="private_YOUR_QQ_NUMBER_HERE"
     )
     print(f"发送结果: {result}")
     
