@@ -1,0 +1,94 @@
+{
+  "id": "hybrid-qq-messenger",
+  "name": "Hybrid QQ Messenger",
+  "version": "1.0.0",
+  "description": "Hybrid QQ messaging plugin with NapCat reception and AstrBot sending",
+  "author": "Alice",
+  "entry": "main.py",
+  "type": "plugin",
+  "skills": ["hybrid-qq-messenger"],
+  "dependencies": [
+    "websockets",
+    "aiohttp"
+  ],
+  "configSchema": {
+    "hybrid_mode": {
+      "type": "object",
+      "properties": {
+        "receiver": {
+          "type": "object",
+          "properties": {
+            "napcat_ws_url": {
+              "type": "string",
+              "format": "uri",
+              "default": "ws://localhost:3001"
+            },
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            },
+            "auto_reconnect": {
+              "type": "boolean", 
+              "default": true
+            }
+          }
+        },
+        "sender": {
+          "type": "object",
+          "properties": {
+            "api_url": {
+              "type": "string",
+              "format": "uri",
+              "default": "http://localhost:6185/api/v1/im/message"
+            },
+            "api_key": {
+              "type": "string",
+              "default": ""
+            },
+            "target_qq": {
+              "type": "string",
+              "pattern": "^[0-9]+$",
+              "default": ""
+            },
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "send_qq_message",
+      "description": "Send proactive QQ message through hybrid messenger",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Message content to send"
+          },
+          "session_id": {
+            "type": "string",
+            "description": "Optional session ID for conversation tracking"
+          }
+        },
+        "required": ["message"]
+      }
+    },
+    {
+      "name": "get_qq_status",
+      "description": "Get hybrid messenger status and connection information",
+      "parameters": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  ],
+  "hooks": {
+    "onStart": "plugin_start",
+    "onStop": "plugin_stop"
+  }
+}

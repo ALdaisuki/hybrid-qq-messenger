@@ -1,0 +1,33 @@
+{
+  "hybrid_mode": {
+    "receiver": {
+      "type": "openclaw-onebot",
+      "napcat_ws_url": "ws://localhost:3001",
+      "enabled": true,
+      "access_token": "",
+      "auto_reconnect": true,
+      "reconnect_delay": 5
+    },
+    "sender": {
+      "type": "astrbot-api",
+      "api_url": "http://localhost:6185/api/v1/im/message",
+      "api_key": "YOUR_ASTRBOT_API_KEY_HERE",
+      "enabled": true,
+      "target_qq": "YOUR_QQ_NUMBER_HERE",
+      "retry_count": 3,
+      "retry_delay": 2
+    },
+    "routing": {
+      "auto_switch": true,
+      "fallback_to_astrbot": true,
+      "session_timeout": 300,
+      "max_message_length": 1000
+    },
+    "enabled": true
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "logs/hybrid-messenger.log",
+    "max_size_mb": 10
+  }
+}

@@ -1,0 +1,184 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Hybrid QQ Messenger Plugin Core
+Main plugin class and lifecycle management
+"""
+
+import logging
+import asyncio
+import sys
+from pathlib import Path
+from typing import Optional, Dict, Any
+
+# Add plugin path for skill manager import
+plugin_dir = Path(__file__).parent.parent
+sys.path.insert(0, str(plugin_dir))
+
+from adapters.napcat_receiver import NapCatReceiver
+from adapters.astrbot_sender import AstrBotSender
+from services.session_manager import SessionManager
+from config.manager import ConfigManager
+from utils.skill_manager import initialize_hybrid_qq_messenger_skill
+
+
+class HybridQQMessenger:
+    """Hybrid QQ Messenger Plugin Main Class"""
+    
+    def __init__(self, context=None):
+        """Initialize hybrid messenger plugin"""
+        self.context = context
+        self.config_manager = ConfigManager()
+        self.config = self.config_manager.load_config()
+        
+        self._setup_logging()
+        
+        # Initialize skill on plugin creation
+        self._initialize_skill()
+        
+        # Initialize adapters and services
+        self.napcat_receiver = NapCatReceiver(self.config)
+        self.astrbot_sender = AstrBotSender(self.config)
+        self.session_manager = SessionManager(self.config)
+        
+        self.logger.info("Hybrid QQ Messenger plugin initialized")
+    
+    def _setup_logging(self):
+        """Setup logging system"""
+        log_config = self.config.get('logging', {})
+        log_level = getattr(logging, log_config.get('level', 'INFO'))
+        
+        logging.basicConfig(
+            level=log_level,
+            format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+            handlers=[
+                logging.StreamHandler()
+            ]
+        )
+        
+        self.logger = logging.getLogger(__name__)
+    
+    def _initialize_skill(self):
+        """Initialize plugin skill"""
+        try:
+            self.logger.info("Initializing Hybrid QQ Messenger skill...")
+            skill_success = initialize_hybrid_qq_messenger_skill()
+            
+            if skill_success:
+                self.logger.info("Skill initialization completed")
+            else:
+                self.logger.warning("Skill initialization failed, but plugin will continue")
+        except Exception as e:
+            self.logger.error(f"Error during skill initialization: {e}")
+    
+    async def start(self):
+        """Start hybrid messenger service"""
+        self.logger.info("Starting Hybrid QQ Messenger service")
+        
+        try:
+            # Start NapCat receiver
+            await self.napcat_receiver.start()
+            
+            # Set message processing callback
+            self.napcat_receiver.set_message_callback(self._handle_incoming_message)
+            
+            self.logger.info("Hybrid messenger service started")
+            
+            # Send startup notification via AstrBot
+            startup_msg = "Hybrid QQ Messenger plugin started successfully"
+            await self.astrbot_sender.send_message(startup_msg)
+            
+        except Exception as e:
+            self.logger.error(f"Error starting service: {e}")
+            raise
+    
+    async def _handle_incoming_message(self, qq_message: Dict[str, Any]):
+        """Handle incoming QQ messages - Direct OpenClaw processing"""
+        try:
+            content = qq_message.get('content', '')
+            sender = qq_message.get('user_id', 'unknown')
+            message_type = qq_message.get('message_type', 'private')
+            
+            self.logger.info(f"Received QQ message from {sender} ({message_type}): {content[:50]}...")
+            
+            # Save session state
+            session_id = qq_message.get('session_id')
+            await self.session_manager.update_session(session_id, qq_message)
+            
+            # Process message through OpenClaw directly
+            await self._process_with_openclaw(content, session_id)
+                    
+        except Exception as e:
+            self.logger.error(f"Error handling message: {e}")
+    
+    async def _process_with_openclaw(self, message: str, session_id: str):
+        """Process message through OpenClaw AI - Natural conversation flow"""
+        try:
+            # Let OpenClaw handle the message in its natural conversation flow
+            if self.context and hasattr(self.context, 'process_message'):
+                # Use OpenClaw's message processing
+                result = await self.context.process_message({
+                    'text': message,
+                    'session_id': session_id,
+                    'platform': 'qq'
+                })
+                
+                # Only send response if OpenClaw generated one
+                if result:
+                    await self.astrbot_sender.send_message(result, session_id)
+                    self.logger.info(f"Response sent to {session_id}")
+                else:
+                    self.logger.debug("No response generated by OpenClaw")
+            else:
+                self.logger.debug("No OpenClaw context available for message processing")
+                
+        except Exception as e:
+            self.logger.error(f"Error processing with OpenClaw: {e}")
+    
+    async def send_proactive_message(self, message: str, session_id: Optional[str] = None):
+        """Send proactive message via AstrBot"""
+        try:
+            result = await self.astrbot_sender.send_message(message, session_id)
+            
+            if result.get('status') == 'ok':
+                self.logger.info(f"Proactive message sent: {message[:50]}...")
+            else:
+                self.logger.error(f"Proactive message failed: {result}")
+                
+            return result
+        except Exception as e:
+            self.logger.error(f"Error sending proactive message: {e}")
+            return {'status': 'error', 'message': str(e)}
+    
+    async def stop(self):
+        """Stop hybrid messenger service"""
+        self.logger.info("Stopping Hybrid QQ Messenger service")
+        
+        try:
+            await self.napcat_receiver.stop()
+            
+            # Send shutdown notification via AstrBot
+            shutdown_msg = "Hybrid QQ Messenger plugin stopped"
+            await self.astrbot_sender.send_message(shutdown_msg)
+            
+            self.logger.info("Hybrid messenger service stopped")
+        except Exception as e:
+            self.logger.error(f"Error stopping service: {e}")
+
+
+# OpenClaw plugin interface functions
+async def plugin_start(context):
+    """Start plugin - called by OpenClaw"""
+    plugin = HybridQQMessenger(context)
+    await plugin.start()
+    return plugin
+
+
+async def plugin_stop(plugin):
+    """Stop plugin - called by OpenClaw"""
+    await plugin.stop()
+
+
+async def send_message(plugin, message: str, session_id: Optional[str] = None):
+    """Send message through plugin"""
+    return await plugin.send_proactive_message(message, session_id)
