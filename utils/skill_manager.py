@@ -22,9 +22,9 @@ class SkillManager:
             plugin_root: 插件根目录路径
         """
         self.plugin_root = Path(plugin_root)
-        self.skills_dir = self.plugin_root.parent.parent / "skills"
+        self.skills_dir = self.plugin_root / "skills"
         self.target_skill_name = "hybrid_qq_messenger"
-        self.source_skill_file = self.plugin_root / "SKILL.md"
+        self.source_skill_file = self.skills_dir / self.target_skill_name / "SKILL.md"
         
     def skill_exists(self) -> bool:
         """
@@ -48,11 +48,8 @@ class SkillManager:
             skill_dir = self.skills_dir / self.target_skill_name
             skill_dir.mkdir(parents=True, exist_ok=True)
             
-            # 复制SKILL.md文件
-            if self.source_skill_file.exists():
-                shutil.copy2(self.source_skill_file, skill_dir / "SKILL.md")
-                print(f"已复制技能文件到: {skill_dir / 'SKILL.md'}")
-            else:
+            # 检查源技能文件是否存在
+            if not self.source_skill_file.exists():
                 print(f"源技能文件不存在: {self.source_skill_file}")
                 return False
             
