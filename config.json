@@ -11,7 +11,7 @@
     "sender": {
       "type": "astrbot-api",
       "api_url": "http://localhost:6185/api/v1/im/message",
-      "api_key": "abk_emYvi0Wg2YZI_097ep_plF9uC579UffliI6Y0s01XJY",
+      "api_key": "YOUR_ASTRBOT_API_KEY_HERE",
       "enabled": true,
       "target_qq": "YOUR_QQ_NUMBER_HERE",
       "retry_count": 3,
