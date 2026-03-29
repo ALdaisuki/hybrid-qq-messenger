@@ -37,6 +37,13 @@ async def example_basic_usage():
     print(f"接收端状态: {config['hybrid_mode']['receiver']['enabled']}")
     print(f"发送端状态: {config['hybrid_mode']['sender']['enabled']}")
     
+    # 示例4: 显示AstrBot API信息
+    print("\n4. AstrBot API信息")
+    sender_config = config['hybrid_mode']['sender']
+    print(f"API端点: {sender_config['api_url']}")
+    print(f"认证方式: X-API-Key 或 Authorization: Bearer")
+    print(f"UMO格式: default:FriendMessage:{sender_config['target_qq']}")
+    
     print("\n✅ 基础使用示例完成")
 
 async def example_advanced_usage():
