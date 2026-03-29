@@ -79,7 +79,7 @@ openclaw gateway restart
 
 ### 步骤8: 测试功能
 ```bash
-cd "J:\Alice\openclaw\plugins\hybrid-qq-messenger"
+cd "YOUR_OPENCLAW_PATH\plugins\hybrid-qq-messenger"
 python quick_test.py
 ```
 

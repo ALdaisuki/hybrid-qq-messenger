@@ -45,7 +45,7 @@ Copy the `hybrid-qq-messenger` folder to your OpenClaw plugins directory.
 
 ### 4. Verify Installation
 ```bash
-cd "J:\Alice\openclaw\plugins\hybrid-qq-messenger"
+cd "YOUR_OPENCLAW_PATH\plugins\hybrid-qq-messenger"
 python check_installation.py
 ```
 
@@ -107,7 +107,7 @@ MIT License - see [LICENSE](LICENSE) file for details
 
 ---
 
-**Maintainer**: Alice  
+**Maintainer**: Plugin Author  
 **Version**: 1.0.0  
 **Status**: Production Ready
 

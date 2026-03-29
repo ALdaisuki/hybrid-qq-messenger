@@ -44,7 +44,7 @@ skills/
     "display_name": "Hybrid QQ Messenger",
     "description": "混合架构QQ消息处理技能",
     "version": "1.0.0",
-    "author": "Alice",
+    "author": "Plugin Author",
     "category": "messaging",
     "tags": ["qq", "messaging", "napcat", "astrbot"]
   },
@@ -117,10 +117,10 @@ class HybridQQMessenger:
 
 ```bash
 # 检查技能目录
-ls "J:\Alice\openclaw\skills\hybrid_qq_messenger"
+ls "YOUR_OPENCLAW_PATH\skills\hybrid_qq_messenger"
 
 # 验证技能内容
-cat "J:\Alice\openclaw\skills\hybrid_qq_messenger\SKILL.md"
+cat "YOUR_OPENCLAW_PATH\skills\hybrid_qq_messenger\SKILL.md"
 ```
 
 ## 故障排除

@@ -58,10 +58,10 @@
 
 ### 方法2：通过命令行（推荐）
 ```bash
-cd "J:\Alice\openclaw\plugins\hybrid-qq-messenger"
+cd "YOUR_OPENCLAW_PATH\plugins\hybrid-qq-messenger"
 
 # 如果仓库已创建，设置远程仓库
-git remote set-url origin https://github.com/ALdaisuki/hybrid-qq-messenger.git
+git remote set-url origin https://github.com/YOUR_USERNAME/hybrid-qq-messenger.git
 
 # 推送代码
 git push origin master

@@ -47,7 +47,7 @@ if __name__ == "__main__":
         print("\n❌ 技能初始化测试失败!")
     
     print("\n检查技能目录内容:")
-    skills_dir = Path("J:/Alice/openclaw/skills/hybrid_qq_messenger")
+    skills_dir = Path("YOUR_OPENCLAW_PATH/skills/hybrid_qq_messenger")
     if skills_dir.exists():
         for item in skills_dir.rglob("*"):
             if item.is_file():

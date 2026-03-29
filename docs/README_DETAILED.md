@@ -65,13 +65,13 @@ pip install websockets aiohttp
 
 ### Step 3: Copy Plugin Files
 
-1. Find your OpenClaw installation directory (usually `J:\Alice\openclaw`)
+1. Find your OpenClaw installation directory (usually `YOUR_OPENCLAW_PATH`)
 2. Go to `plugins` folder
 3. Copy the entire `hybrid-qq-messenger` folder here
 
 **Final path should be:**
 ```
-J:\Alice\openclaw\plugins\hybrid-qq-messenger\
+YOUR_OPENCLAW_PATH\plugins\hybrid-qq-messenger\
 ```
 
 ### Step 4: Configure NapCat (Important!)
@@ -102,7 +102,7 @@ Open this file with a text editor, make sure it contains:
 
 Find OpenClaw configuration file:
 ```
-J:\Alice\openclaw\openclaw.json
+YOUR_OPENCLAW_PATH\openclaw.json
 ```
 
 Open with text editor, find `plugins` section, add this configuration:
@@ -118,8 +118,8 @@ Open with text editor, find `plugins` section, add this configuration:
     ],
     "load": {
       "paths": [
-        "J:\\\\Alice\\\\openclaw\\\\plugins\\\\memory-lancedb-pro",
-        "J:\\\\Alice\\\\openclaw\\\\plugins\\\\hybrid-qq-messenger"  // Add this line
+        "YOUR_OPENCLAW_PATH\\\\plugins\\\\memory-lancedb-pro",
+        "YOUR_OPENCLAW_PATH\\\\plugins\\\\hybrid-qq-messenger"  // Add this line
       ]
     },
     "entries": {
@@ -156,7 +156,7 @@ Then in the same file, find `channels` section, add:
 
 Open plugin configuration file:
 ```
-J:\Alice\openclaw\plugins\hybrid-qq-messenger\config.json
+YOUR_OPENCLAW_PATH\plugins\hybrid-qq-messenger\config.json
 ```
 
 Modify to this content:
@@ -175,7 +175,7 @@ Modify to this content:
     "sender": {
       "type": "astrbot-api",
       "api_url": "http://localhost:6185/api/v1/im/message",
-      "api_key": "abk_ZzD65Hl91FqYTOupmqICqq9kChCaWWTuUq_8JEvR82E",  // Change to your real API key
+      "api_key": "YOUR_ASTRBOT_API_KEY_HERE",  // Change to your real API key
       "enabled": true,
       "target_qq": "YOUR_QQ_NUMBER_HERE",  // Change to your QQ number
       "retry_count": 3,
@@ -397,7 +397,7 @@ openclaw logs
 
 Plugin log file at:
 ```
-J:\Alice\openclaw\plugins\hybrid-qq-messenger\logs\hybrid-messenger.log
+YOUR_OPENCLAW_PATH\plugins\hybrid-qq-messenger\logs\hybrid-messenger.log
 ```
 
 ### Check Service Status
@@ -471,6 +471,6 @@ Now you can:
 - 📤 Proactively send messages to QQ friends
 - 🔄 Enjoy stable and reliable messaging service
 
-**Maintainer**: Alice  
+**Maintainer**: Plugin Author  
 **Version**: 1.0.0  
 **Tutorial Update Time**: 2026-03-29

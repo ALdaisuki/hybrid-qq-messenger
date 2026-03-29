@@ -3,7 +3,7 @@
   "name": "Hybrid QQ Messenger",
   "version": "1.0.0",
   "description": "Hybrid QQ messaging plugin with NapCat reception and AstrBot sending",
-  "author": "Alice",
+  "author": "Plugin Author",
   "entry": "main.py",
   "type": "plugin",
   "skills": ["hybrid-qq-messenger"],

@@ -65,13 +65,13 @@ pip install websockets aiohttp
 
 ### 第三步：复制插件文件
 
-1. 找到你的OpenClaw安装目录（通常是 `J:\Alice\openclaw`）
+1. 找到你的OpenClaw安装目录（通常是 `YOUR_OPENCLAW_PATH`）
 2. 进入 `plugins` 文件夹
 3. 把整个 `hybrid-qq-messenger` 文件夹复制到这里
 
 **最终路径应该是：**
 ```
-J:\Alice\openclaw\plugins\hybrid-qq-messenger\
+YOUR_OPENCLAW_PATH\plugins\hybrid-qq-messenger\
 ```
 
 ### 第四步：配置NapCat（重要！）
@@ -102,7 +102,7 @@ napcat/config/onebot11_你的QQ号.json
 
 找到OpenClaw配置文件：
 ```
-J:\Alice\openclaw\openclaw.json
+YOUR_OPENCLAW_PATH\openclaw.json
 ```
 
 用文本编辑器打开，找到 `plugins` 部分，添加以下配置：
@@ -118,8 +118,8 @@ J:\Alice\openclaw\openclaw.json
     ],
     "load": {
       "paths": [
-        "J:\\\\Alice\\\\openclaw\\\\plugins\\\\memory-lancedb-pro",
-        "J:\\\\Alice\\\\openclaw\\\\plugins\\\\hybrid-qq-messenger"  // 添加这一行
+        "YOUR_OPENCLAW_PATH\\\\plugins\\\\memory-lancedb-pro",
+        "YOUR_OPENCLAW_PATH\\\\plugins\\\\hybrid-qq-messenger"  // 添加这一行
       ]
     },
     "entries": {
@@ -156,7 +156,7 @@ J:\Alice\openclaw\openclaw.json
 
 打开插件配置文件：
 ```
-J:\Alice\openclaw\plugins\hybrid-qq-messenger\config.json
+YOUR_OPENCLAW_PATH\plugins\hybrid-qq-messenger\config.json
 ```
 
 修改为以下内容：
@@ -175,7 +175,7 @@ J:\Alice\openclaw\plugins\hybrid-qq-messenger\config.json
     "sender": {
       "type": "astrbot-api",
       "api_url": "http://localhost:6185/api/v1/im/message",
-      "api_key": "abk_ZzD65Hl91FqYTOupmqICqq9kChCaWWTuUq_8JEvR82E",  // 改成你的API密钥
+      "api_key": "YOUR_ASTRBOT_API_KEY_HERE",  // 改成你的API密钥
       "enabled": true,
       "target_qq": "YOUR_QQ_NUMBER_HERE",  // 改成你的QQ号
       "retry_count": 3,
@@ -397,7 +397,7 @@ openclaw logs
 
 插件日志文件在：
 ```
-J:\Alice\openclaw\plugins\hybrid-qq-messenger\logs\hybrid-messenger.log
+YOUR_OPENCLAW_PATH\plugins\hybrid-qq-messenger\logs\hybrid-messenger.log
 ```
 
 ### 检查服务状态
@@ -471,6 +471,6 @@ MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
 - 📤 主动发送消息给QQ好友
 - 🔄 享受稳定可靠的消息服务
 
-**维护者**: Alice  
+**维护者**: Plugin Author  
 **版本**: 1.0.0  
 **教程更新时间**: 2026-03-29

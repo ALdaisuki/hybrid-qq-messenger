@@ -79,7 +79,7 @@ class SkillManager:
                 "display_name": "Hybrid QQ Messenger",
                 "description": "混合架构QQ消息处理技能",
                 "version": "1.0.0",
-                "author": "Alice",
+                "author": "Plugin Author",
                 "category": "messaging",
                 "tags": ["qq", "messaging", "napcat", "astrbot"]
             },

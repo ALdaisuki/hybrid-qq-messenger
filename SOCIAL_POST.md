@@ -56,7 +56,7 @@ Hybrid QQ Messenger 是一个专为 OpenClaw 设计的插件，采用混合架�
 
 ## 获取方式
 
-**GitHub仓库**: https://github.com/ALdaisuki/hybrid-qq-messenger
+**GitHub仓库**: https://github.com/YOUR_USERNAME/hybrid-qq-messenger
 
 **快速安装**:
 ```bash

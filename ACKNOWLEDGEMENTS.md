@@ -74,8 +74,8 @@
 
 ## 📞 联系方式
 
-- **项目仓库**: [GitHub Repository](https://github.com/ALdaisuki/hybrid-qq-messenger)
-- **问题反馈**: [Issues](https://github.com/ALdaisuki/hybrid-qq-messenger/issues)
+- **项目仓库**: [GitHub Repository](https://github.com/YOUR_USERNAME/hybrid-qq-messenger)
+- **问题反馈**: [Issues](https://github.com/YOUR_USERNAME/hybrid-qq-messenger/issues)
 - **讨论社区**: [OpenClaw Discord](https://discord.com/invite/clawd)
 
 ---

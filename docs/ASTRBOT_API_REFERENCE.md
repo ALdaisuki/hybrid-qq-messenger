@@ -18,10 +18,10 @@ AstrBot是一个支持API Key认证的QQ机器人框架，从v4.18.0开始提供
 
 ```http
 # 方式1: X-API-Key头
-X-API-Key: abk_ZzD65Hl91FqYTOupmqICqq9kChCaWWTuUq_8JEvR82E
+X-API-Key: YOUR_ASTRBOT_API_KEY_HERE
 
 # 方式2: Bearer Token
-Authorization: Bearer abk_ZzD65Hl91FqYTOupmqICqq9kChCaWWTuUq_8JEvR82E
+Authorization: Bearer YOUR_ASTRBOT_API_KEY_HERE
 ```
 
 ## 消息发送端点
@@ -36,7 +36,7 @@ Authorization: Bearer abk_ZzD65Hl91FqYTOupmqICqq9kChCaWWTuUq_8JEvR82E
 
 ```json
 {
-  "umo": "default:FriendMessage:3364897325",
+  "umo": "default:FriendMessage:YOUR_QQ_NUMBER_HERE",
   "message": "消息内容",
   "session_id": "optional_session_identifier"
 }
@@ -62,7 +62,7 @@ UMO (Universal Message Object) 用于指定消息类型和目标：
     "message": null,
     "data": {}
   },
-  "umo": "default:FriendMessage:3364897325"
+  "umo": "default:FriendMessage:YOUR_QQ_NUMBER_HERE"
 }
 ```
 
@@ -93,9 +93,9 @@ UMO (Universal Message Object) 用于指定消息类型和目标：
 curl -X POST \
   http://localhost:6185/api/v1/im/message \
   -H 'Content-Type: application/json' \
-  -H 'X-API-Key: abk_ZzD65Hl91FqYTOupmqICqq9kChCaWWTuUq_8JEvR82E' \
+  -H 'X-API-Key: YOUR_ASTRBOT_API_KEY_HERE' \
   -d '{
-    "umo": "default:FriendMessage:3364897325",
+    "umo": "default:FriendMessage:YOUR_QQ_NUMBER_HERE",
     "message": "Hello from AstrBot API"
   }'
 
@@ -103,9 +103,9 @@ curl -X POST \
 curl -X POST \
   http://localhost:6185/api/v1/im/message \
   -H 'Content-Type: application/json' \
-  -H 'Authorization: Bearer abk_ZzD65Hl91FqYTOupmqICqq9kChCaWWTuUq_8JEvR82E' \
+  -H 'Authorization: Bearer YOUR_ASTRBOT_API_KEY_HERE' \
   -d '{
-    "umo": "default:FriendMessage:3364897325",
+    "umo": "default:FriendMessage:YOUR_QQ_NUMBER_HERE",
     "message": "Hello from AstrBot API"
   }'
 ```
@@ -118,12 +118,12 @@ import asyncio
 
 async def send_astrbot_message():
     headers = {
-        'X-API-Key': 'abk_ZzD65Hl91FqYTOupmqICqq9kChCaWWTuUq_8JEvR82E',
+        'X-API-Key': 'YOUR_ASTRBOT_API_KEY_HERE',
         'Content-Type': 'application/json'
     }
     
     payload = {
-        "umo": "default:FriendMessage:3364897325",
+        "umo": "default:FriendMessage:YOUR_QQ_NUMBER_HERE",
         "message": "测试消息"
     }
     
@@ -155,8 +155,8 @@ asyncio.run(send_astrbot_message())
     "sender": {
       "type": "astrbot-api",
       "api_url": "http://localhost:6185/api/v1/im/message",
-      "api_key": "abk_ZzD65Hl91FqYTOupmqICqq9kChCaWWTuUq_8JEvR82E",
-      "target_qq": "3364897325",
+      "api_key": "YOUR_ASTRBOT_API_KEY_HERE",
+      "target_qq": "YOUR_QQ_NUMBER_HERE",
       "enabled": true,
       "retry_count": 3,
       "retry_delay": 2

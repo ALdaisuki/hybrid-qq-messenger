@@ -25,7 +25,7 @@ await extended.take_screenshot()
 
 # 元素操作
 await extended.click_element("button.submit")
-await extended.fill_form("input.name", "Alice")
+await extended.fill_form("input.name", "Example Name")
 
 # 数据提取
 await extended.extract_text("h1.title")

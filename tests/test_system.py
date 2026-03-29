@@ -34,7 +34,7 @@ async def test_system():
     print("\n2. Testing AstrBot API connection...")
     try:
         api_url = "http://localhost:6185/api/v1/im/message"
-        api_key = "abk_ZzD65Hl91FqYTOupmqICqq9kChCaWWTuUq_8JEvR82E"
+        api_key = "YOUR_ASTRBOT_API_KEY_HERE"
         
         headers = {
             'X-API-Key': api_key,
