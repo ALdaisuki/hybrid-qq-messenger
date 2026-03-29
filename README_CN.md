@@ -261,6 +261,7 @@ hybrid-qq-messenger/
 - 🙏 **[致谢文档](ACKNOWLEDGEMENTS.md)** - 感谢框架和贡献者
 - 📖 **[详细教程](docs/README_CN_DETAILED.md)** - 超详细中文安装教程
 - 🔧 **[AstrBot API参考](docs/ASTRBOT_API_REFERENCE.md)** - 完整的API使用指南
+- 🚀 **[扩展功能](docs/EXTENDED_FEATURES.md)** - 浏览器自动化和插件调用
 
 ## 许可证
 
